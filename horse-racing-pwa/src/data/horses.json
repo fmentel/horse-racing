@@ -17,6 +17,6 @@
         "speed": 92,
         "stamina": 81,
         "price": 350,
-        "ownerId": null
+        "ownerId": 1
     }
 ]

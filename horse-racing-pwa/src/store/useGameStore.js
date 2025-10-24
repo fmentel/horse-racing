@@ -11,9 +11,9 @@ export const useGameStore = create((set) => ({
     },
 
     // --- Game entities ---
-    horses: [],    // all horses available in game
-    races: [],     // list of races (public or private)
-    leagues: [],   // all leagues created by users
+    horses: ["h1", "h2"],    // all horses available in game
+    races: ["r1"],     // list of races (public or private)
+    leagues: ["l1"],   // all leagues created by users
 
     // --- Mutations ---
     setUser: (user) => set({ user }),
@@ -60,7 +60,7 @@ export const useGameStore = create((set) => ({
 
     initializeGame: ({ users, horses, races, leagues }) =>
         set(() => ({
-            user: users[0],        // On prend le premier comme user actif
+            user: users[0],
             horses,
             races,
             leagues

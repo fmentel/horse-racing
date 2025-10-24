@@ -11,6 +11,7 @@ const App = () => {
   const initializeGame = useGameStore((state) => state.initializeGame);
 
   useEffect(() => {
+    console.log('USERS:', usersData); // ← debug ici
     initializeGame({
       users: usersData,
       horses: horsesData,
@@ -19,7 +20,9 @@ const App = () => {
     });
   }, [initializeGame]);
 
-  return <Stables />;
+  const user = useGameStore((state) => state.user);
+
+  return user ? <Stables /> : <p>Loading...</p>;
 };
 
 export default App;

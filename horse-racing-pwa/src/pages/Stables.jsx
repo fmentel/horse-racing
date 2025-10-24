@@ -5,13 +5,21 @@ const Stables = () => {
 	const user = useGameStore((state) => state.user);
 	const horses = useGameStore((state) => state.horses);
 
-  	// On filtre les chevaux appartenant à l'utilisateur connecté
-	const ownedHorses = horses.filter((horse) => user.ownedHorses.includes(horse.id));
+	if (typeof user !== 'object' || !Array.isArray(user.ownedHorses)) {
+		return <p>Loading your stables...</p>;
+	}
+
+	const ownedHorses = horses.filter((horse) =>
+		user.ownedHorses.includes(horse.id)
+	);
+
+	console.log('USER:', user);
+	console.log('HORSES:', horses);
+	console.log('OWNED HORSES:', user?.ownedHorses);
 
 	return (
 		<div style={{ padding: '20px' }}>
 		<h1>🏇 Your Stables</h1>
-
 		{ownedHorses.length === 0 ? (
 			<p>You don't own any horses yet. Go buy one!</p>
 		) : (
